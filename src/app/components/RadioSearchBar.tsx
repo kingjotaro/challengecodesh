@@ -26,7 +26,7 @@ const RadioSearchBar: React.FC<RadioSearchBarProps> = ({ onSearch }) => {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Search Radio Stations"
+          label="Search Radio Stations Here"
           InputProps={{
             ...params.InputProps,
             endAdornment: (

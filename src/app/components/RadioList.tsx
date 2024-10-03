@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AudioPlayer from './AudioPlayer'; // Importe o player customizado
 
 interface Station {
   stationuuid: string;
@@ -41,18 +42,14 @@ const RadioList: React.FC<RadioListProps> = ({ searchTerm }) => {
 
   return (
     <div>
-      <h2>Resultados da Pesquisa</h2>
+      
       {loading && <div>Carregando estações...</div>}
       {!loading && stations.length === 0 && <div>Nenhuma estação encontrada.</div>}
+      
       <ul>
         {stations.map((station) => (
           <li key={station.stationuuid}>
-            <strong>{station.name}</strong> - {station.country} ({station.codec})
-            <br />
-            <audio controls style={{ width: '100%' }}>
-              <source src={station.url_resolved} type={`audio/${station.codec}`} />
-              Seu navegador não suporta o elemento de áudio.
-            </audio>
+            <AudioPlayer station={station} />
           </li>
         ))}
       </ul>
